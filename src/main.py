@@ -1,5 +1,6 @@
 from .api import Api_Service
 from .analysis import json_to_csv_excel
+from .perf_time import timer
 import json
 import os
 from collections import defaultdict
@@ -14,18 +15,22 @@ def export_data(filename, data):
         json.dump(data, f, indent=4, ensure_ascii=False)
 
 
+@timer
 def get_user_profile():
     return service.get_profile()
 
 
+@timer
 def get_user_repos(repo_url):
     return service.get_repos(repo_url)
 
 
+@timer
 def get_repo_commits(commit_url):
     return service.get_repos(commit_url)
 
 
+@timer
 def main():
     profile = get_user_profile()
     if profile:
