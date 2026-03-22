@@ -1,4 +1,4 @@
-from api_config import Api_Config
+from .config import Api_Config
 from dotenv import load_dotenv
 import requests
 import os
@@ -24,14 +24,6 @@ class Api_Service:
     def get_repos(self, repos_url):
         try:
             response = requests.get(repos_url, headers=self.api_config.headers())
-            return response.json()
-        except Exception as e:
-            print(f"How exceptional! {e}")
-            return None
-
-    def get_commits(self, commit_url):
-        try:
-            response = requests.get(commit_url, headers=self.api_config.headers())
             return response.json()
         except Exception as e:
             print(f"How exceptional! {e}")
